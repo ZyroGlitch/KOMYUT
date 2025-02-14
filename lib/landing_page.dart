@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:komyut/login_page.dart';
+import 'package:komyut/register_page.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -41,11 +43,20 @@ class _LandingPageState extends State<LandingPage> {
               Column(
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => LoginPage(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFFF2AF4A),
                       foregroundColor: Colors.white,
                       fixedSize: Size(500, 48),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       textStyle:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -53,11 +64,20 @@ class _LandingPageState extends State<LandingPage> {
                   ),
                   SizedBox(height: 18),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RegisterPage(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey,
                       foregroundColor: Colors.white,
                       fixedSize: Size(500, 48),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       textStyle: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
