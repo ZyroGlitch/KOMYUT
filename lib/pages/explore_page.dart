@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:komyut/components/drawer_navbar.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -14,6 +15,7 @@ class _ExplorePageState extends State<ExplorePage> {
       appBar: AppBar(
         title: Text('EXPLORE PAGE'),
       ),
+      drawer: DrawerNavbar(),
       body: Center(
         child: Text('This is explore page.'),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:komyut/components/drawer_navbar.dart';
 
 class SubscriptionPage extends StatefulWidget {
   const SubscriptionPage({super.key});
@@ -14,6 +15,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
       appBar: AppBar(
         title: Text('SUBSCRIPTION PAGE'),
       ),
+      drawer: DrawerNavbar(),
       body: Center(
         child: Text('This is subscription page.'),
       ),

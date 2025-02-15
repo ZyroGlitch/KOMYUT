@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:komyut/pages/home_page.dart';
 import 'package:komyut/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -98,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => RegisterPage(),
+                      builder: (context) => HomePage(),
                     ),
                   );
                 },
