@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:komyut/login_page.dart';
 import 'package:komyut/pages/explore_page.dart';
-import 'package:komyut/pages/home_page.dart';
 import 'package:komyut/pages/subscription_page.dart';
-import 'package:quickalert/quickalert.dart';
 
-class DrawerNavigation extends StatefulWidget {
-  const DrawerNavigation({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<DrawerNavigation> createState() => _DrawerNavigationState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _DrawerNavigationState extends State<DrawerNavigation> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Drawer Navigation'),
+        title: Text('HOME PAGE'),
       ),
       drawer: Drawer(
         backgroundColor: Colors.white,
@@ -53,13 +51,6 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
                           builder: (context) => HomePage(),
                         ),
                       );
-                      // QuickAlert.show(
-                      //   context: context,
-                      //   type: QuickAlertType.success,
-                      //   text: 'Home ListTile gained focus.',
-                      //   autoCloseDuration: const Duration(seconds: 5),
-                      //   showConfirmBtn: true,
-                      // );
                     },
                   ),
                   ListTile(
@@ -128,6 +119,9 @@ class _DrawerNavigationState extends State<DrawerNavigation> {
             ],
           ),
         ),
+      ),
+      body: Center(
+        child: Text('This is homepage.'),
       ),
     );
   }
