@@ -13,7 +13,16 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SUBSCRIPTION PAGE'),
+        backgroundColor: Colors.orange,
+        foregroundColor: Colors.white,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            CircleAvatar(
+              backgroundImage: AssetImage('images/profile.jpg'),
+            ),
+          ],
+        ),
       ),
       drawer: DrawerNavbar(),
       body: Center(

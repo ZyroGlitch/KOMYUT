@@ -13,7 +13,16 @@ class _ExplorePageState extends State<ExplorePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('EXPLORE PAGE'),
+        backgroundColor: Colors.orange,
+        foregroundColor: Colors.white,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            CircleAvatar(
+              backgroundImage: AssetImage('images/profile.jpg'),
+            ),
+          ],
+        ),
       ),
       drawer: DrawerNavbar(),
       body: Center(

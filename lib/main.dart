@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:komyut/landing.dart';
+import 'package:komyut/pages/home_page.dart';
+import 'package:komyut/route_content.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'KOMYUT',
       debugShowCheckedModeBanner: false,
-      home: Landing(),
+      home: RouteContent(),
     );
   }
 }
