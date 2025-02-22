@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:komyut/components/listTile_drawer.dart';
 import 'package:komyut/login_page.dart';
-import 'package:komyut/pages/explore_page.dart';
+import 'package:komyut/pages/emergencyHotline_page.dart';
+import 'package:komyut/pages/report_page.dart';
 import 'package:komyut/pages/home_page.dart';
 import 'package:komyut/pages/referral_program_page.dart';
 import 'package:komyut/pages/subscription_page.dart';
 
-class DrawerNavbar extends StatelessWidget {
+class DrawerNavbar extends StatefulWidget {
   const DrawerNavbar({super.key});
 
   @override
+  State<DrawerNavbar> createState() => _DrawerNavbarState();
+}
+
+class _DrawerNavbarState extends State<DrawerNavbar> {
+  @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.zero,
       ),
@@ -31,90 +37,73 @@ class DrawerNavbar extends StatelessWidget {
                     ),
                   ),
                 ),
-                ListTile(
-                  leading: Icon(Icons.home, color: Colors.black),
-                  textColor: Colors.black,
-                  hoverColor: Colors.orange,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  title: Text('Home'),
-                  onTap: () {
+                ListtileDrawer(
+                  routeName: 'Home',
+                  destinationPage: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => HomePage(),
                       ),
                     );
-                    // QuickAlert.show(
-                    //   context: context,
-                    //   type: QuickAlertType.success,
-                    //   text: 'Home ListTile gained focus.',
-                    //   autoCloseDuration: const Duration(seconds: 5),
-                    //   showConfirmBtn: true,
-                    // );
                   },
+                  icon: Icons.explore,
                 ),
-                ListTile(
-                  leading: Icon(Icons.explore, color: Colors.black),
-                  textColor: Colors.black,
-                  hoverColor: Colors.orange,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  title: Text('Explore'),
-                  onTap: () {
+                ListtileDrawer(
+                  routeName: 'Report Issue',
+                  destinationPage: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => ExplorePage(),
+                        builder: (context) => ReportPage(),
                       ),
                     );
                   },
+                  icon: Icons.support_agent,
                 ),
-                ListTile(
-                  leading: Icon(Icons.subscriptions, color: Colors.black),
-                  textColor: Colors.black,
-                  hoverColor: Colors.orange,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  title: Text('Subscription Plan'),
-                  onTap: () {
+                ListtileDrawer(
+                  routeName: 'Emergency Hotline',
+                  destinationPage: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => EmergencyhotlinePage(),
+                      ),
+                    );
+                  },
+                  icon: Icons.contact_emergency,
+                ),
+                ListtileDrawer(
+                  routeName: 'Subscription Plan',
+                  destinationPage: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => SubscriptionPage(),
                       ),
                     );
                   },
+                  icon: Icons.subscriptions,
                 ),
-                ListTile(
-                  leading: Icon(Icons.share, color: Colors.black),
-                  textColor: Colors.black,
-                  hoverColor: Colors.orange,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  title: Text('Referral Program'),
-                  onTap: () {
+                ListtileDrawer(
+                  routeName: 'Referral Program',
+                  destinationPage: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) =>
-                            ReferralProgramPage(), // Update this line
+                        builder: (context) => ReferralProgramPage(),
                       ),
                     );
                   },
+                  icon: Icons.share,
                 ),
               ],
             ),
-            ListTile(
-              leading: Icon(Icons.logout_rounded, color: Colors.black),
-              textColor: Colors.black,
-              hoverColor: Colors.orange,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              title: Text('Signout'),
-              onTap: () {
+            ListtileDrawer(
+              routeName: 'Signout',
+              destinationPage: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => LoginPage(),
                   ),
                 );
               },
+              icon: Icons.logout_rounded,
             ),
           ],
         ),

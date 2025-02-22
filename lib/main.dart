@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:komyut/landing.dart';
+import 'package:komyut/landing_page.dart';
+import 'package:komyut/pages/emergencyHotline_page.dart';
 import 'package:komyut/pages/home_page.dart';
-import 'package:komyut/route_content.dart';
+import 'package:komyut/pages/referral_program_page.dart';
+import 'package:komyut/pages/report_page.dart';
+import 'package:komyut/pages/subscription_page.dart';
+import 'package:komyut/report_issue_page/add_report.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'KOMYUT',
       debugShowCheckedModeBanner: false,
-      home: RouteContent(),
+      home: HomePage(),
     );
   }
 }
