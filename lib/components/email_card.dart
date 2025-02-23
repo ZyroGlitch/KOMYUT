@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:komyut/report_issue_page/view_report.dart';
 
 class EmailCard extends StatefulWidget {
   EmailCard({super.key});
@@ -14,7 +15,13 @@ class _EmailCardState extends State<EmailCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ViewReport(),
+          ),
+        );
+      },
       onHover: (value) {
         setState(() {
           widget.cardColor = value ? Colors.cyan : Colors.white;
