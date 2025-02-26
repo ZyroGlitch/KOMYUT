@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:komyut/components/drawer_navbar.dart';
 import 'package:komyut/components/perks.dart';
 import 'package:komyut/components/subscription_card.dart';
+import 'package:komyut/payment_gateway/gcash.dart';
+
+import 'profile_page.dart';
 
 class SubscriptionPage extends StatefulWidget {
   const SubscriptionPage({super.key});
@@ -23,8 +26,17 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CircleAvatar(
-              backgroundImage: AssetImage('images/profile.jpg'),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ),
+                );
+              },
+              child: CircleAvatar(
+                backgroundImage: AssetImage('images/profile.jpg'),
+              ),
             ),
           ],
         ),
@@ -94,7 +106,13 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                 ),
                 SizedBox(height: 32),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Gcash(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),

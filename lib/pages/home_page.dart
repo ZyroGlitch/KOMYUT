@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:komyut/components/drawer_navbar.dart';
-import 'package:komyut/route_content.dart';
+import 'package:komyut/pages/profile_page.dart';
+import 'package:komyut/route_page/googleMap_screen.dart';
+import 'package:komyut/route_page/route_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,8 +23,17 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CircleAvatar(
-              backgroundImage: AssetImage('images/profile.jpg'),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ),
+                );
+              },
+              child: CircleAvatar(
+                backgroundImage: AssetImage('images/profile.jpg'),
+              ),
             ),
           ],
         ),
@@ -70,7 +81,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => RouteContent(),
+                    builder: (context) => GooglemapScreen(),
                   ),
                 );
               },

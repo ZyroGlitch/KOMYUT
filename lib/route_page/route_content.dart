@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:komyut/pages/home_page.dart';
+import 'package:komyut/route_page/googleMap_screen.dart';
 
 class RouteContent extends StatefulWidget {
   const RouteContent({super.key});
@@ -15,12 +16,6 @@ class _RouteContentState extends State<RouteContent> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            'images/map.png',
-            height: 400,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
           Expanded(
             child: Container(
               width: double.infinity, // Make it stretch

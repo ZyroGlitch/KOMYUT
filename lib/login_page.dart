@@ -25,11 +25,12 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'images/logo.png',
-                width: 200,
-                height: 200,
+                'images/komyut_logo.png',
+                width: 250,
+                height: 250,
                 fit: BoxFit.cover,
               ),
+              SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(

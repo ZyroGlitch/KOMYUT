@@ -32,7 +32,7 @@ class _DrawerNavbarState extends State<DrawerNavbar> {
                   decoration: BoxDecoration(),
                   child: Center(
                     child: Image.asset(
-                      'images/logo.png',
+                      'images/komyut_logo.png',
                       fit: BoxFit.cover,
                     ),
                   ),

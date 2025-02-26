@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:komyut/components/drawer_navbar.dart';
 
+import 'profile_page.dart';
+
 class ReferralProgramPage extends StatefulWidget {
   const ReferralProgramPage({super.key});
 
@@ -20,8 +22,17 @@ class _ReferralProgramPageState extends State<ReferralProgramPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CircleAvatar(
-              backgroundImage: AssetImage('images/profile.jpg'),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ),
+                );
+              },
+              child: CircleAvatar(
+                backgroundImage: AssetImage('images/profile.jpg'),
+              ),
             ),
           ],
         ),
@@ -136,6 +147,7 @@ class _ReferralProgramPageState extends State<ReferralProgramPage> {
                       child: ElevatedButton.icon(
                         onPressed: () {},
                         label: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
                               'images/instagram.png',
@@ -149,35 +161,11 @@ class _ReferralProgramPageState extends State<ReferralProgramPage> {
                         ),
                         style: ElevatedButton.styleFrom(
                           fixedSize: Size(200, 40),
-                          backgroundColor: Colors.pink,
+                          backgroundColor: Color.fromARGB(255, 255, 93, 93),
                           foregroundColor: Colors.white,
                           textStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {},
-                        label: Row(
-                          children: [
-                            Image.asset(
-                              'images/messenger.png',
-                              width: 20,
-                              height: 20,
-                              fit: BoxFit.cover,
-                            ),
-                            SizedBox(width: 10),
-                            Text('Messenger'),
-                          ],
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          fixedSize: Size(200, 40),
-                          backgroundColor: Colors.cyan,
-                          foregroundColor: Colors.white,
-                          textStyle: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),

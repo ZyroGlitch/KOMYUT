@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:komyut/components/drawer_navbar.dart';
 import 'package:komyut/components/hotline.dart';
 
+import 'profile_page.dart';
+
 class EmergencyhotlinePage extends StatefulWidget {
   const EmergencyhotlinePage({super.key});
 
@@ -19,8 +21,17 @@ class _EmergencyhotlinePageState extends State<EmergencyhotlinePage> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              CircleAvatar(
-                backgroundImage: AssetImage('images/profile.jpg'),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ProfilePage(),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('images/profile.jpg'),
+                ),
               ),
             ],
           ),
@@ -29,7 +40,7 @@ class _EmergencyhotlinePageState extends State<EmergencyhotlinePage> {
         body: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(18.0),
               child: Column(
                 children: [
                   Hotline(

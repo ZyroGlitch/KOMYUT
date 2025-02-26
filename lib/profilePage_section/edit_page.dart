@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
 
 class EditPage extends StatefulWidget {
   const EditPage({super.key});
@@ -146,7 +147,19 @@ class _EditPageState extends State<EditPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.success,
+                            text: 'Profile Updated Successfully.',
+                            autoCloseDuration: Duration(seconds: 5),
+                            onConfirmBtnTap: () {
+                              Navigator.pop(context);
+                            },
+                          ).then((value) {
+                            Navigator.pop(context);
+                          });
+                        },
                         style: ElevatedButton.styleFrom(
                           fixedSize: Size(180, 35),
                           backgroundColor: Colors.orange,
@@ -192,19 +205,19 @@ class _EditPageState extends State<EditPage> {
                       children: [
                         _buildAvatar(
                           context,
-                          asset: 'images/profile.jpg',
+                          asset: 'images/avatars/girl1.jpg',
                           profileId: 1,
                           setState: setState,
                         ),
                         _buildAvatar(
                           context,
-                          asset: 'images/profile.jpg',
+                          asset: 'images/avatars/girl2.jpg',
                           profileId: 2,
                           setState: setState,
                         ),
                         _buildAvatar(
                           context,
-                          asset: 'images/profile.jpg',
+                          asset: 'images/avatars/girl3.jpg',
                           profileId: 3,
                           setState: setState,
                         ),
@@ -217,19 +230,19 @@ class _EditPageState extends State<EditPage> {
                       children: [
                         _buildAvatar(
                           context,
-                          asset: 'images/profile.jpg',
+                          asset: 'images/avatars/men1.jpg',
                           profileId: 4,
                           setState: setState,
                         ),
                         _buildAvatar(
                           context,
-                          asset: 'images/profile.jpg',
+                          asset: 'images/avatars/men2.jpg',
                           profileId: 5,
                           setState: setState,
                         ),
                         _buildAvatar(
                           context,
-                          asset: 'images/profile.jpg',
+                          asset: 'images/avatars/men3.jpg',
                           profileId: 6,
                           setState: setState,
                         ),
@@ -267,7 +280,19 @@ class _EditPageState extends State<EditPage> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.success,
+                            text: 'User Profile Updated Successfully.',
+                            autoCloseDuration: Duration(seconds: 5),
+                            onConfirmBtnTap: () {
+                              Navigator.pop(context);
+                            },
+                          ).then((value) {
+                            Navigator.pop(context);
+                          });
+                        },
                         child: Text('SAVE'),
                       ),
                     ),

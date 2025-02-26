@@ -20,12 +20,15 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'images/logo.png',
-              width: 350,
-              height: 350,
+              'images/komyut_logo.png',
+              width: 250,
+              height: 250,
+              fit: BoxFit.cover,
             ),
+            SizedBox(height: 16),
             TextField(
               controller: usernametxt,
               decoration: InputDecoration(

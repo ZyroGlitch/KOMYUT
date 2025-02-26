@@ -3,6 +3,8 @@ import 'package:komyut/components/drawer_navbar.dart';
 import 'package:komyut/components/email_card.dart';
 import 'package:komyut/report_issue_page/add_report.dart';
 
+import 'profile_page.dart';
+
 class ReportPage extends StatefulWidget {
   const ReportPage({super.key});
 
@@ -20,8 +22,17 @@ class _ReportPageState extends State<ReportPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CircleAvatar(
-              backgroundImage: AssetImage('images/profile.jpg'),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ),
+                );
+              },
+              child: CircleAvatar(
+                backgroundImage: AssetImage('images/profile.jpg'),
+              ),
             ),
           ],
         ),
