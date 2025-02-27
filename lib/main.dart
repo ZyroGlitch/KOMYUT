@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'KOMYUT',
       debugShowCheckedModeBanner: false,
-      home: GooglemapScreen(),
+      home: HomePage(),
     );
   }
 }

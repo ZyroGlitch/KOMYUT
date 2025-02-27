@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:komyut/components/drawer_navbar.dart';
+import 'package:komyut/components/route_card.dart';
 import 'package:komyut/pages/profile_page.dart';
 import 'package:komyut/route_page/googleMap_screen.dart';
 import 'package:komyut/route_page/route_content.dart';
@@ -41,158 +43,64 @@ class _HomePageState extends State<HomePage> {
       drawer: DrawerNavbar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: ListView(
           children: [
-            Row(
+            Column(
               children: [
-                Expanded(
-                  flex: 2,
-                  child: TextField(
-                    controller: searchtxt,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: TextField(
+                        controller: searchtxt,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          hintText: 'Search a jeepney route',
+                        ),
                       ),
-                      hintText: 'Search...',
                     ),
-                  ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () {},
+                        label: Text(
+                          'Search',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        icon: Icon(Icons.search),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
+                          fixedSize: Size(150, 50),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    label: Text(
-                      'Search',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    icon: Icon(Icons.search),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
-                      foregroundColor: Colors.white,
-                      fixedSize: Size(150, 50),
-                    ),
-                  ),
+                // Route Suggestions
+                SizedBox(height: 20),
+                RouteCard(
+                  routeName: 'Bago Aplaya',
+                  routeDirection:
+                      LatLng(7.0414018074710425, 125.52935128787122),
                 ),
+                SizedBox(height: 5),
+                // RouteCard(routeName: 'Bangkal'),
+                // SizedBox(height: 5),
+                // RouteCard(routeName: 'Bo.Obrero'),
+                // SizedBox(height: 5),
+                // RouteCard(routeName: 'Buhangin (via Dacudao)'),
+                // SizedBox(height: 5),
+                // RouteCard(routeName: 'Buhangin (via JP Laurel)'),
+                // SizedBox(height: 5),
+                // RouteCard(routeName: 'Bunawan (via Buhangin)'),
+                // SizedBox(height: 5),
+                // RouteCard(routeName: 'Bunawan (via Sasa)'),
+                // SizedBox(height: 5),
+                // RouteCard(routeName: 'Calinan'),
               ],
-            ),
-            // Route Suggestions
-            SizedBox(height: 20),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => GooglemapScreen(),
-                  ),
-                );
-              },
-              child: Card(
-                color: Color.fromARGB(255, 80, 80, 80),
-                elevation: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(18),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            'images/logo.png',
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(width: 20),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Route 1',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                'P12',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Text(
-                        '3km',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 5),
-            InkWell(
-              onTap: () {},
-              child: Card(
-                color: Color.fromARGB(255, 80, 80, 80),
-                elevation: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(18),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            'images/logo.png',
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(width: 20),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Route 1',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                'P12',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Text(
-                        '3km',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ),
           ],
         ),

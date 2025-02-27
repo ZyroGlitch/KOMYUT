@@ -5,13 +5,22 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../pages/home_page.dart';
 
 class GooglemapScreen extends StatefulWidget {
-  const GooglemapScreen({super.key});
+  final String destinationName;
+  final LatLng direction;
+
+  const GooglemapScreen({
+    super.key,
+    required this.destinationName,
+    required this.direction,
+  });
 
   @override
   State<GooglemapScreen> createState() => _GooglemapScreenState();
 }
 
 class _GooglemapScreenState extends State<GooglemapScreen> {
+  _GooglemapScreenState();
+
   final LatLng universityOfMindanao =
       LatLng(7.065915145350813, 125.59644310778414);
 
@@ -21,21 +30,21 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
 
   Set<Polyline> polylines = {};
 
-  List<LatLng> pointOnMap = [
-    LatLng(7.0657235, 125.5964753), // This is UM Matina
-    LatLng(7.063372985350324, 125.59823710697474), // 24/7 Chicken Matina
-    LatLng(7.0643942071924775,
-        125.60090389123938), // Jasmine Petron Gasoline Station
-    LatLng(7.064488217372279, 125.59876120434855), // Arsonaro Boarding House
-  ];
+  List<LatLng> pointOnMap = [];
 
   double selectedMarkerDistance = 0.0;
+  double distanceToDestination = 0.0;
 
   @override
   void initState() {
     super.initState();
 
     // This is for polyLines
+    pointOnMap = [
+      LatLng(7.0657235, 125.5964753), // This is UM Matina
+      widget.direction, // Dynamic direction
+    ];
+
     for (int i = 0; i < pointOnMap.length; i++) {
       markers.add(
         Marker(
@@ -64,6 +73,8 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
         ),
       );
     });
+
+    updateDistanceToDestination();
   }
 
   @override
@@ -140,7 +151,7 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Gravahan',
+                      widget.destinationName,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 36,
@@ -149,20 +160,11 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'Distance: ${selectedMarkerDistance.toStringAsFixed(2)} km',
+                      'Distance: ${distanceToDestination.toStringAsFixed(2)} km',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                      textAlign: TextAlign.justify,
                     ),
                     SizedBox(height: 20),
                     ElevatedButton.icon(
@@ -241,9 +243,7 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
           ),
           position: pointOnMap[i],
           infoWindow: InfoWindow(
-            title: 'Places around my school.',
-            snippet:
-                'This is the place number #$i\nDistance: ${distanceInKm.toStringAsFixed(2)} km',
+            title: widget.destinationName,
           ),
           icon: BitmapDescriptor.defaultMarker,
           onTap: () {
@@ -267,6 +267,21 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
 
     setState(() {
       selectedMarkerDistance = distanceInKm;
+    });
+  }
+
+  void updateDistanceToDestination() async {
+    Position userPosition = await currentPosition();
+    double distanceInMeters = Geolocator.distanceBetween(
+      userPosition.latitude,
+      userPosition.longitude,
+      widget.direction.latitude,
+      widget.direction.longitude,
+    );
+    double distanceInKm = distanceInMeters / 1000;
+
+    setState(() {
+      distanceToDestination = distanceInKm;
     });
   }
 }
