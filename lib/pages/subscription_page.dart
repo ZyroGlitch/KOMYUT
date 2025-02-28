@@ -21,7 +21,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
         iconTheme: IconThemeData(
           color: Colors.black, // Change the drawer icon color to grey
         ),
-        backgroundColor: Color(0xFFf5fffd),
+        backgroundColor: Colors.orange,
         shadowColor: Colors.grey,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -72,39 +72,30 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 22),
+                SizedBox(height: 36),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SubscriptionCard(
-                      description: 'Free',
-                      price: '₱0.00',
-                      status: true,
-                    ),
+                        description: 'Standard', price: '₱150.00 montly'),
                     SubscriptionCard(
-                      description: 'Standard',
-                      price: '₱500.00 / month',
-                      status: false,
-                    ),
-                    SubscriptionCard(
-                      description: 'Premium',
-                      price: '₱1000.00 / month',
-                      status: false,
-                    ),
+                        description: 'Premium', price: '₱1000.00 anually'),
                   ],
                 ),
-                SizedBox(height: 26),
+                SizedBox(height: 36),
                 Column(
                   children: [
-                    Perks(content: 'Unlimited route suggestions.'),
+                    Perks(content: 'More jeepney route suggestions.'),
                     SizedBox(height: 8),
-                    Perks(content: 'Unlimited route suggestions.'),
+                    Perks(content: 'Unlimited landmark pinpoints.'),
                     SizedBox(height: 8),
-                    Perks(content: 'Unlimited route suggestions.'),
+                    Perks(content: 'Exclusive updates.'),
+                    SizedBox(height: 8),
+                    Perks(content: 'Exclusive Theme & Profile Customization'),
                     SizedBox(height: 8),
                   ],
                 ),
-                SizedBox(height: 32),
+                SizedBox(height: 36),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
@@ -117,8 +108,8 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    backgroundColor: Color(0xFF82d6f8),
-                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.orange[400],
+                    foregroundColor: Colors.white,
                     fixedSize: Size(1000, 45),
                   ),
                   child: Text(

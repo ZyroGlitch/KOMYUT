@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:komyut/frostedGlass.dart';
 import 'package:komyut/login_page.dart';
 
 class Landing extends StatelessWidget {

@@ -5,11 +5,9 @@ class SubscriptionCard extends StatelessWidget {
     super.key,
     required this.description,
     required this.price,
-    required this.status,
   });
 
   final String description, price;
-  final bool status;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ class SubscriptionCard extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         child: Card.outlined(
-          color: Colors.grey,
+          color: Colors.orange[400],
           elevation: 1,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -37,14 +35,6 @@ class SubscriptionCard extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  status ? 'Activated' : 'Inactive',
-                  style: TextStyle(
-                    color: status ? Colors.greenAccent : Colors.white,
-                    fontSize: 16,
                   ),
                   textAlign: TextAlign.center,
                 ),

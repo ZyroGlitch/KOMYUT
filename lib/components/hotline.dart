@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class Hotline extends StatelessWidget {
   const Hotline({
     super.key,
-    required this.backgroundColor,
     required this.hotline,
     required this.number,
     required this.image,
   });
 
-  final Color backgroundColor;
   final String hotline, number, image;
 
   @override
@@ -19,7 +17,7 @@ class Hotline extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
       ),
-      color: backgroundColor,
+      color: Colors.orange[400],
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -36,8 +34,8 @@ class Hotline extends StatelessWidget {
                 Text(
                   '$hotline \n$number',
                   style: TextStyle(
-                    color: Colors.white,
                     fontSize: 16,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

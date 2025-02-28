@@ -54,7 +54,7 @@ class _ReportPageState extends State<ReportPage> {
                       onPressed: () {},
                       child: Text('All'),
                       style: OutlinedButton.styleFrom(
-                        backgroundColor: Colors.white,
+                        backgroundColor: Colors.cyan[100],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),

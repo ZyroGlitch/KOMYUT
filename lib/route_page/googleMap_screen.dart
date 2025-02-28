@@ -7,11 +7,13 @@ import '../pages/home_page.dart';
 class GooglemapScreen extends StatefulWidget {
   final String destinationName;
   final LatLng direction;
+  final List<LatLng> jeepneys;
 
   const GooglemapScreen({
     super.key,
     required this.destinationName,
     required this.direction,
+    required this.jeepneys,
   });
 
   @override
@@ -27,54 +29,76 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
   late GoogleMapController googleMapController;
   Set<Marker> markers = {};
   LatLng currentLocation = LatLng(7.0657235, 125.5964753); // This is UM Matina
-
   Set<Polyline> polylines = {};
-
   List<LatLng> pointOnMap = [];
-
   double selectedMarkerDistance = 0.0;
   double distanceToDestination = 0.0;
+
+  BitmapDescriptor customIcon = BitmapDescriptor.defaultMarker;
 
   @override
   void initState() {
     super.initState();
+    customMarker(); // Load the custom marker
+    currentPosition();
 
-    // This is for polyLines
     pointOnMap = [
-      LatLng(7.0657235, 125.5964753), // This is UM Matina
+      LatLng(7.0657235, 125.5964753), // UM Matina
       widget.direction, // Dynamic direction
+      ...widget.jeepneys, // Jeepneys locations
     ];
-
-    for (int i = 0; i < pointOnMap.length; i++) {
-      markers.add(
-        Marker(
-          markerId: MarkerId(
-            i.toString(),
-          ),
-          position: pointOnMap[i],
-          infoWindow: InfoWindow(
-            title: 'Places around my school.',
-            snippet: 'This is the place number #$i',
-          ),
-          icon: BitmapDescriptor.defaultMarker,
-          onTap: () {
-            updateSelectedMarkerDistance(pointOnMap[i]);
-          },
-        ),
-      );
-    }
 
     setState(() {
       polylines.add(
         Polyline(
-          polylineId: PolylineId("ID"),
+          polylineId: const PolylineId("current_to_destination"),
           color: Colors.green,
-          points: pointOnMap,
+          points: [pointOnMap[0], pointOnMap[1]],
         ),
       );
+
+      polylines.add(
+        Polyline(
+          polylineId: const PolylineId("jeepneys"),
+          color: Colors.orange,
+          points: pointOnMap.sublist(1),
+        ),
+      );
+
+      // Add markers
+      for (int i = 0; i < pointOnMap.length; i++) {
+        BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
+        if (i > 1) {
+          markerIcon = customIcon; // Use the custom marker for jeepneys
+        }
+
+        markers.add(
+          Marker(
+            markerId: MarkerId(i.toString()),
+            position: pointOnMap[i],
+            infoWindow: InfoWindow(
+              title: i > 1 ? 'Jeepney #$i' : 'Place #$i',
+              snippet:
+                  i > 1 ? 'This is a jeepney location.' : 'This is a place.',
+            ),
+            icon: markerIcon,
+            onTap: () {
+              updateSelectedMarkerDistance(pointOnMap[i]);
+            },
+          ),
+        );
+      }
     });
 
     updateDistanceToDestination();
+  }
+
+  void customMarker() async {
+    customIcon = await BitmapDescriptor.asset(
+      const ImageConfiguration(size: Size(48, 48)),
+      'images/jeep32.png', // Path to your custom marker image
+    );
+    setState(() {}); // Refresh UI after loading marker
   }
 
   @override
@@ -87,10 +111,8 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
             child: Stack(
               children: [
                 GoogleMap(
-                  // This is for the current location of the user
                   myLocationButtonEnabled: false,
-                  zoomControlsEnabled:
-                      false, // Disable the predefined zoom in/out buttons
+                  zoomControlsEnabled: false,
                   markers: markers,
                   polylines: polylines,
                   onMapCreated: (GoogleMapController controller) {
@@ -119,9 +141,9 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
                       );
                       markers.add(Marker(
                         icon: BitmapDescriptor.defaultMarker,
-                        markerId: MarkerId('current_location'),
+                        markerId: const MarkerId('current_location'),
                         position: LatLng(position.latitude, position.longitude),
-                        infoWindow: InfoWindow(
+                        infoWindow: const InfoWindow(
                           title: 'My Current Location',
                           snippet: 'This is University of Mindanao.',
                         ),
@@ -130,7 +152,7 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
                         updateMarkersWithDistance(position);
                       });
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.my_location,
                       color: Colors.black,
                       size: 30,
@@ -144,7 +166,7 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
             flex: 3,
             child: Container(
               width: double.infinity,
-              color: Colors.grey,
+              color: Colors.orange[100],
               padding: const EdgeInsets.all(18),
               child: SingleChildScrollView(
                 child: Column(
@@ -152,39 +174,43 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
                   children: [
                     Text(
                       widget.destinationName,
-                      style: TextStyle(
-                        color: Colors.white,
+                      style: const TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
-                      'Distance: ${distanceToDestination.toStringAsFixed(2)} km',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
+                      'Current Location -> ${widget.destinationName}',
+                      style: const TextStyle(
+                        fontSize: 20,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    Text(
+                      'Distance: ${distanceToDestination.toStringAsFixed(2)} km',
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                     ElevatedButton.icon(
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => HomePage(),
+                            builder: (context) => const HomePage(),
                           ),
                         );
                       },
-                      label: Text(
+                      label: const Text(
                         'Back',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      icon: Icon(Icons.arrow_back),
+                      icon: const Icon(Icons.arrow_back),
                       style: ElevatedButton.styleFrom(
-                        fixedSize: Size(150, 40),
+                        fixedSize: const Size(150, 40),
                         backgroundColor: Colors.orange,
                         foregroundColor: Colors.white,
                       ),
@@ -203,12 +229,11 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
     bool serviceEnable;
     LocationPermission permission;
 
-    // check if the location service are enabled or not
     serviceEnable = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnable) {
       return Future.error('Location service is disabled');
     }
-    // check the location permission status
+
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
@@ -221,49 +246,65 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
       return Future.error('Location permission is denied permanently');
     }
 
-    Position position = await Geolocator.getCurrentPosition();
-    return position;
+    return await Geolocator.getCurrentPosition();
   }
 
   void updateMarkersWithDistance(Position userPosition) {
-    markers.clear();
-    for (int i = 0; i < pointOnMap.length; i++) {
-      double distanceInMeters = Geolocator.distanceBetween(
-        userPosition.latitude,
-        userPosition.longitude,
-        pointOnMap[i].latitude,
-        pointOnMap[i].longitude,
-      );
-      double distanceInKm = distanceInMeters / 1000;
+    markers.clear(); // Remove only the previous current location marker
 
+    // Add back the current location marker without changing its InfoWindow
+    markers.add(
+      Marker(
+        markerId: const MarkerId('current_location'),
+        position: LatLng(userPosition.latitude, userPosition.longitude),
+        infoWindow: const InfoWindow(
+          title: 'My Current Location',
+          snippet: 'This is University of Mindanao.',
+        ),
+        icon: BitmapDescriptor.defaultMarker,
+      ),
+    );
+
+    // Add the destination marker with a static InfoWindow
+    markers.add(
+      Marker(
+        markerId: const MarkerId('destination'),
+        position: widget.direction,
+        infoWindow: InfoWindow(
+          title: widget.destinationName,
+          snippet: 'Destination location',
+        ),
+        icon: BitmapDescriptor.defaultMarker,
+      ),
+    );
+
+    // Re-add jeepney markers without modifying their InfoWindow
+    for (int i = 0; i < widget.jeepneys.length; i++) {
       markers.add(
         Marker(
-          markerId: MarkerId(
-            i.toString(),
-          ),
-          position: pointOnMap[i],
+          markerId: MarkerId('jeepney_$i'),
+          position: widget.jeepneys[i],
           infoWindow: InfoWindow(
-            title: widget.destinationName,
+            title: 'Jeepney #${i + 1}',
+            snippet: 'This is a jeepney location.',
           ),
-          icon: BitmapDescriptor.defaultMarker,
-          onTap: () {
-            updateSelectedMarkerDistance(pointOnMap[i]);
-          },
+          icon: customIcon,
         ),
       );
     }
+
     setState(() {});
   }
 
   void updateSelectedMarkerDistance(LatLng markerPosition) async {
     Position userPosition = await currentPosition();
-    double distanceInMeters = Geolocator.distanceBetween(
-      userPosition.latitude,
-      userPosition.longitude,
-      markerPosition.latitude,
-      markerPosition.longitude,
-    );
-    double distanceInKm = distanceInMeters / 1000;
+    double distanceInKm = Geolocator.distanceBetween(
+          userPosition.latitude,
+          userPosition.longitude,
+          markerPosition.latitude,
+          markerPosition.longitude,
+        ) /
+        1000;
 
     setState(() {
       selectedMarkerDistance = distanceInKm;
@@ -272,13 +313,13 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
 
   void updateDistanceToDestination() async {
     Position userPosition = await currentPosition();
-    double distanceInMeters = Geolocator.distanceBetween(
-      userPosition.latitude,
-      userPosition.longitude,
-      widget.direction.latitude,
-      widget.direction.longitude,
-    );
-    double distanceInKm = distanceInMeters / 1000;
+    double distanceInKm = Geolocator.distanceBetween(
+          userPosition.latitude,
+          userPosition.longitude,
+          widget.direction.latitude,
+          widget.direction.longitude,
+        ) /
+        1000;
 
     setState(() {
       distanceToDestination = distanceInKm;

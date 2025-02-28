@@ -112,7 +112,7 @@ class _ReferralProgramPageState extends State<ReferralProgramPage> {
                   icon: Icon(Icons.copy),
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(200, 40),
-                    backgroundColor: Colors.orangeAccent,
+                    backgroundColor: Colors.orange[400],
                     foregroundColor: Colors.white,
                     textStyle: TextStyle(fontWeight: FontWeight.bold),
                   ),

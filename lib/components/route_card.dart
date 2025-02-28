@@ -8,10 +8,12 @@ class RouteCard extends StatelessWidget {
     super.key,
     required this.routeName,
     required this.routeDirection,
+    required this.jeepneys,
   });
 
   final String routeName;
   final LatLng routeDirection;
+  final List<LatLng> jeepneys;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +24,14 @@ class RouteCard extends StatelessWidget {
             builder: (context) => GooglemapScreen(
               destinationName: routeName,
               direction: routeDirection,
+              jeepneys: jeepneys,
             ),
           ),
         );
       },
       child: Card(
-        color: Colors.white54,
+        // color: Colors.white54,
+        color: Colors.orange[100],
         elevation: 2,
         child: Padding(
           padding: const EdgeInsets.all(18),

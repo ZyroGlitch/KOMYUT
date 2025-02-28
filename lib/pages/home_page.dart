@@ -82,24 +82,35 @@ class _HomePageState extends State<HomePage> {
                 // Route Suggestions
                 SizedBox(height: 20),
                 RouteCard(
-                  routeName: 'Bago Aplaya',
-                  routeDirection:
-                      LatLng(7.0414018074710425, 125.52935128787122),
+                  routeName: 'Matina Aplaya',
+                  routeDirection: LatLng(7.0428252846035075, 125.5819558635912),
+                  jeepneys: [
+                    LatLng(7.06327477333032, 125.5989188107519),
+                    LatLng(7.067552404416505, 125.6021786429538),
+                  ],
                 ),
                 SizedBox(height: 5),
-                // RouteCard(routeName: 'Bangkal'),
+                // RouteCard(
+                //   routeName: 'Ecoland',
+                //   routeDirection: LatLng(7.048872894241014, 125.59570547420532),
+                // ),
                 // SizedBox(height: 5),
-                // RouteCard(routeName: 'Bo.Obrero'),
+                // RouteCard(
+                //   routeName: 'Claveria',
+                //   routeDirection: LatLng(7.070159357988616, 125.6114712519623),
+                // ),
                 // SizedBox(height: 5),
-                // RouteCard(routeName: 'Buhangin (via Dacudao)'),
+                // RouteCard(
+                //   routeName: 'Sta. Ana Ave',
+                //   routeDirection:
+                //       LatLng(7.0772005174468475, 125.61956608079798),
+                // ),
                 // SizedBox(height: 5),
-                // RouteCard(routeName: 'Buhangin (via JP Laurel)'),
+                // RouteCard(
+                //   routeName: 'Catalunan Pequeno',
+                //   routeDirection: LatLng(7.073299197794062, 125.52324846552237),
+                // ),
                 // SizedBox(height: 5),
-                // RouteCard(routeName: 'Bunawan (via Buhangin)'),
-                // SizedBox(height: 5),
-                // RouteCard(routeName: 'Bunawan (via Sasa)'),
-                // SizedBox(height: 5),
-                // RouteCard(routeName: 'Calinan'),
               ],
             ),
           ],

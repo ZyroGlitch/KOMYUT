@@ -70,7 +70,7 @@ class _GcashState extends State<Gcash> {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  'php 200.00',
+                  'php 150.00',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black54,
@@ -121,7 +121,7 @@ class _GcashState extends State<Gcash> {
                             ),
                           ),
                           Text(
-                            'Unknown Hacker',
+                            'David Aguilar',
                             style: TextStyle(
                               fontSize: 16,
                             ),
@@ -142,7 +142,7 @@ class _GcashState extends State<Gcash> {
                             ),
                           ),
                           Text(
-                            'hacker@gmail.com',
+                            'david@gmail.com',
                             style: TextStyle(
                               fontSize: 16,
                             ),

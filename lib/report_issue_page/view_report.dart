@@ -115,7 +115,7 @@ class _ViewReportState extends State<ViewReport> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                          'Hi, I want to report an accident that just happened on Ecoland near SM Ecoland. It looks like 5 vehicles are involved, and there may be injuries. Traffic is building up, and the road is partially/fully blocked. I’m not sure if emergency responders are on the scene yet. Please take action as soon as possible. Let me know if you need more details.',
                           style: TextStyle(
                             fontSize: 16,
                           ),
@@ -172,7 +172,7 @@ class _ViewReportState extends State<ViewReport> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hacker',
+                          'Chat Support',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -203,19 +203,9 @@ class _ViewReportState extends State<ViewReport> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                                'Thank you for sharing this update about the road condition.',
                                 style: TextStyle(
                                   fontSize: 16,
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                              InkWell(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'images/accident.jpg',
-                                  width: 50,
-                                  height: 50,
-                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ],
