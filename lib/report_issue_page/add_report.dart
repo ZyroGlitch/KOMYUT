@@ -20,7 +20,8 @@ class _AddReportState extends State<AddReport> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.orange,
+        foregroundColor: Colors.white,
         centerTitle: true,
         title: Text('Add Report Issue'),
         leading: IconButton(
@@ -148,7 +149,8 @@ class _AddReportState extends State<AddReport> {
                 });
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.yellow,
+                backgroundColor: Colors.orange[400],
+                foregroundColor: Colors.white,
                 fixedSize: Size(500, 40),
                 textStyle: TextStyle(fontSize: 16),
               ),

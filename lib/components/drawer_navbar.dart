@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:komyut/components/listTile_drawer.dart';
 import 'package:komyut/login_page.dart';
 import 'package:komyut/pages/emergencyHotline_page.dart';
+import 'package:komyut/pages/landMark_page.dart';
+import 'package:komyut/pages/redeemPoints_page.dart';
 import 'package:komyut/pages/report_page.dart';
 import 'package:komyut/pages/home_page.dart';
 import 'package:komyut/pages/referral_program_page.dart';
@@ -38,7 +40,7 @@ class _DrawerNavbarState extends State<DrawerNavbar> {
                   ),
                 ),
                 ListtileDrawer(
-                  routeName: 'Home',
+                  routeName: 'Routes',
                   destinationPage: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -47,6 +49,17 @@ class _DrawerNavbarState extends State<DrawerNavbar> {
                     );
                   },
                   icon: Icons.explore,
+                ),
+                ListtileDrawer(
+                  routeName: 'Davao Landmarks',
+                  destinationPage: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => LandmarkPage(),
+                      ),
+                    );
+                  },
+                  icon: Icons.place,
                 ),
                 ListtileDrawer(
                   routeName: 'Report Issue',
@@ -91,6 +104,17 @@ class _DrawerNavbarState extends State<DrawerNavbar> {
                     );
                   },
                   icon: Icons.share,
+                ),
+                ListtileDrawer(
+                  routeName: 'Points Redemption',
+                  destinationPage: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => RedeempointsPage(),
+                      ),
+                    );
+                  },
+                  icon: Icons.redeem,
                 ),
               ],
             ),

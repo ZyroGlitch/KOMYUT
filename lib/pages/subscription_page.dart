@@ -18,10 +18,8 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black, // Change the drawer icon color to grey
-        ),
         backgroundColor: Colors.orange,
+        foregroundColor: Colors.white,
         shadowColor: Colors.grey,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,

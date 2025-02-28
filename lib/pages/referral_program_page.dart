@@ -65,7 +65,7 @@ class _ReferralProgramPageState extends State<ReferralProgramPage> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  '100 \nLoyal Points',
+                  '100 \nLoyalty Points',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -207,7 +207,7 @@ class _ReferralProgramPageState extends State<ReferralProgramPage> {
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Refer your friends and earn 100 loyal points on every successful referral.',
+                                'Refer your friends and earn 100 loyalty points on every successful referral.',
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),

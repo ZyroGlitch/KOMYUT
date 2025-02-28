@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:komyut/login_page.dart';
+import 'package:komyut/profilePage_section/changePassword.dart';
 import 'package:komyut/profilePage_section/edit_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -115,7 +116,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 InkWell(
                   borderRadius: BorderRadius.circular(15),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Changepassword(),
+                      ),
+                    );
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(

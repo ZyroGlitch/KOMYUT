@@ -32,148 +32,153 @@ class _EditPageState extends State<EditPage> {
           icon: Icon(Icons.arrow_back, color: Colors.orange),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
               children: [
-                Text(
-                  'Edit Profile',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Card(
-                  color: Colors.orange,
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Icon(
-                      Icons.edit,
-                      color: Colors.white,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Edit Profile',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                    Card(
+                      color: Colors.orange,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            SizedBox(height: 30),
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.grey,
-                  radius: 57,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('images/profile.jpg'),
-                    radius: 50,
-                  ),
-                ),
-                Positioned(
-                  bottom: -5,
-                  right: 0,
-                  child: IconButton(
-                    onPressed: () {
-                      showWideAvatarSelectionDialog(context);
-                    },
-                    icon: Icon(Icons.edit),
-                    style: IconButton.styleFrom(
+                SizedBox(height: 30),
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    CircleAvatar(
                       backgroundColor: Colors.grey,
-                      foregroundColor: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 30),
-
-            // Name
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 26),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Name',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  TextField(
-                    controller: nameController,
-                    decoration: InputDecoration(
-                      hintText: 'Zyro Glitch',
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.orange,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.orange,
-                          width: 3,
-                        ),
+                      radius: 57,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('images/profile.jpg'),
+                        radius: 50,
                       ),
                     ),
-                  ),
-
-                  // Email
-                  SizedBox(height: 16),
-                  Text(
-                    'Email',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  TextField(
-                    controller: nameController,
-                    decoration: InputDecoration(
-                      hintText: 'zyro@gmail.com',
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.orange,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.orange,
-                          width: 3,
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  // Save Button
-                  SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ElevatedButton(
+                    Positioned(
+                      bottom: -5,
+                      right: 0,
+                      child: IconButton(
                         onPressed: () {
-                          QuickAlert.show(
-                            context: context,
-                            type: QuickAlertType.success,
-                            text: 'Profile Updated Successfully.',
-                            autoCloseDuration: Duration(seconds: 5),
-                            onConfirmBtnTap: () {
-                              Navigator.pop(context);
-                            },
-                          ).then((value) {
-                            Navigator.pop(context);
-                          });
+                          showWideAvatarSelectionDialog(context);
                         },
-                        style: ElevatedButton.styleFrom(
-                          fixedSize: Size(180, 35),
-                          backgroundColor: Colors.orange,
+                        icon: Icon(Icons.edit),
+                        style: IconButton.styleFrom(
+                          backgroundColor: Colors.grey,
                           foregroundColor: Colors.white,
                         ),
-                        child: Text('Save'),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+
+                // Name
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 26),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Name',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      TextField(
+                        controller: nameController,
+                        decoration: InputDecoration(
+                          hintText: 'Zyro Glitch',
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.orange,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.orange,
+                              width: 3,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // Email
+                      SizedBox(height: 16),
+                      Text(
+                        'Email',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      TextField(
+                        controller: nameController,
+                        decoration: InputDecoration(
+                          hintText: 'zyro@gmail.com',
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.orange,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.orange,
+                              width: 3,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // Save Button
+                      SizedBox(height: 30),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              QuickAlert.show(
+                                context: context,
+                                type: QuickAlertType.success,
+                                text: 'Profile Updated Successfully.',
+                                autoCloseDuration: Duration(seconds: 5),
+                                onConfirmBtnTap: () {
+                                  Navigator.pop(context);
+                                },
+                              ).then((value) {
+                                Navigator.pop(context);
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(180, 35),
+                              backgroundColor: Colors.orange,
+                              foregroundColor: Colors.white,
+                            ),
+                            child: Text('Save'),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
