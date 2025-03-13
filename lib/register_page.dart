@@ -30,8 +30,8 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 Image.asset(
                   'images/komyut_logo.png',
-                  width: 250,
-                  height: 250,
+                  width: 210,
+                  height: 210,
                   fit: BoxFit.cover,
                 ),
                 SizedBox(height: 16),

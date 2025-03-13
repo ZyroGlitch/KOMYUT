@@ -326,10 +326,10 @@ class _EditPageState extends State<EditPage> {
       child: CircleAvatar(
         backgroundColor:
             selectedProfile == profileId ? Colors.orange : Colors.white,
-        radius: 45,
+        radius: 37,
         child: CircleAvatar(
           backgroundImage: AssetImage(asset),
-          radius: 40,
+          radius: 32,
         ),
       ),
     );

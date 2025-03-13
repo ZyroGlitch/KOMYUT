@@ -9,9 +9,10 @@ class RouteCard extends StatelessWidget {
     required this.routeName,
     required this.routeDirection,
     required this.jeepneys,
+    required this.fare,
   });
 
-  final String routeName;
+  final String routeName, fare;
   final LatLng routeDirection;
   final List<LatLng> jeepneys;
 
@@ -25,6 +26,7 @@ class RouteCard extends StatelessWidget {
               destinationName: routeName,
               direction: routeDirection,
               jeepneys: jeepneys,
+              fare: fare,
             ),
           ),
         );

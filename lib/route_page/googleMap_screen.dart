@@ -5,7 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../pages/home_page.dart';
 
 class GooglemapScreen extends StatefulWidget {
-  final String destinationName;
+  final String destinationName, fare;
   final LatLng direction;
   final List<LatLng> jeepneys;
 
@@ -14,6 +14,7 @@ class GooglemapScreen extends StatefulWidget {
     required this.destinationName,
     required this.direction,
     required this.jeepneys,
+    required this.fare,
   });
 
   @override
@@ -57,13 +58,13 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
         ),
       );
 
-      polylines.add(
-        Polyline(
-          polylineId: const PolylineId("jeepneys"),
-          color: Colors.orange,
-          points: pointOnMap.sublist(1),
-        ),
-      );
+      // polylines.add(
+      //   Polyline(
+      //     polylineId: const PolylineId("jeepneys"),
+      //     color: Colors.orange,
+      //     points: pointOnMap.sublist(1),
+      //   ),
+      // );
 
       // Add markers
       for (int i = 0; i < pointOnMap.length; i++) {
@@ -192,7 +193,13 @@ class _GooglemapScreenState extends State<GooglemapScreen> {
                         fontSize: 20,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    Text(
+                      'Fare: ₱${widget.fare}',
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
                     ElevatedButton.icon(
                       onPressed: () {
                         Navigator.of(context).push(

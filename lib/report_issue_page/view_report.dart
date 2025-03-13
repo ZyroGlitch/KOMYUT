@@ -20,12 +20,12 @@ class _ViewReportState extends State<ViewReport> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('View Report'),
-            OutlinedButton.icon(
+            OutlinedButton(
               onPressed: () {},
-              icon: Icon(Icons.check),
-              label: Text('Mark as Read'),
+              child: Text('Mark as Read'),
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.white,
+                fixedSize: Size(140, 40),
               ),
             ),
           ],

@@ -50,12 +50,12 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   children: [
                     Expanded(
-                      flex: 2,
+                      flex: 4,
                       child: TextField(
                         controller: searchtxt,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(100),
                           ),
                           hintText: 'Search a jeepney route',
                         ),
@@ -63,20 +63,29 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: ElevatedButton.icon(
+                      child: IconButton(
                         onPressed: () {},
-                        label: Text(
-                          'Search',
-                          style: TextStyle(fontSize: 16),
-                        ),
                         icon: Icon(Icons.search),
-                        style: ElevatedButton.styleFrom(
+                        style: IconButton.styleFrom(
                           backgroundColor: Colors.orange,
                           foregroundColor: Colors.white,
                           fixedSize: Size(150, 50),
                         ),
                       ),
                     ),
+                    // ElevatedButton.icon(
+                    //   onPressed: () {},
+                    //   label: Text(
+                    //     'Search',
+                    //     style: TextStyle(fontSize: 13),
+                    //   ),
+                    //   icon: Icon(Icons.search),
+                    //   style: ElevatedButton.styleFrom(
+                    //     backgroundColor: Colors.orange,
+                    //     foregroundColor: Colors.white,
+                    //     fixedSize: Size(150, 50),
+                    //   ),
+                    // ),
                   ],
                 ),
                 // Route Suggestions
@@ -84,27 +93,36 @@ class _HomePageState extends State<HomePage> {
                 RouteCard(
                   routeName: 'Matina Aplaya',
                   routeDirection: LatLng(7.0428252846035075, 125.5819558635912),
+                  fare: '13',
                   jeepneys: [
                     LatLng(7.06327477333032, 125.5989188107519),
                     LatLng(7.067552404416505, 125.6021786429538),
+                    LatLng(7.0627546602066085, 125.59700467931148),
+                    LatLng(7.063532187465152, 125.60072093703862),
                   ],
                 ),
                 SizedBox(height: 5),
                 RouteCard(
                   routeName: 'Ecoland',
                   routeDirection: LatLng(7.048872894241014, 125.59570547420532),
+                  fare: '13',
                   jeepneys: [
                     LatLng(7.06327477333032, 125.5989188107519),
                     LatLng(7.067552404416505, 125.6021786429538),
+                    LatLng(7.0627546602066085, 125.59700467931148),
+                    LatLng(7.063532187465152, 125.60072093703862),
                   ],
                 ),
                 SizedBox(height: 5),
                 RouteCard(
                   routeName: 'Claveria',
                   routeDirection: LatLng(7.070159357988616, 125.6114712519623),
+                  fare: '13',
                   jeepneys: [
                     LatLng(7.06327477333032, 125.5989188107519),
                     LatLng(7.067552404416505, 125.6021786429538),
+                    LatLng(7.0627546602066085, 125.59700467931148),
+                    LatLng(7.063532187465152, 125.60072093703862),
                   ],
                 ),
                 SizedBox(height: 5),
@@ -112,21 +130,51 @@ class _HomePageState extends State<HomePage> {
                   routeName: 'Sta. Ana Ave',
                   routeDirection:
                       LatLng(7.0772005174468475, 125.61956608079798),
+                  fare: '13',
                   jeepneys: [
                     LatLng(7.06327477333032, 125.5989188107519),
                     LatLng(7.067552404416505, 125.6021786429538),
+                    LatLng(7.0627546602066085, 125.59700467931148),
+                    LatLng(7.063532187465152, 125.60072093703862),
                   ],
                 ),
                 SizedBox(height: 5),
                 RouteCard(
                   routeName: 'Catalunan Pequeno',
                   routeDirection: LatLng(7.073299197794062, 125.52324846552237),
+                  fare: '20',
                   jeepneys: [
                     LatLng(7.06327477333032, 125.5989188107519),
                     LatLng(7.067552404416505, 125.6021786429538),
+                    LatLng(7.0627546602066085, 125.59700467931148),
+                    LatLng(7.063532187465152, 125.60072093703862),
                   ],
                 ),
                 SizedBox(height: 5),
+                RouteCard(
+                  routeName: 'Mintal',
+                  routeDirection:
+                      LatLng(7.0918231601410415, 125.49458852089336),
+                  fare: '20',
+                  jeepneys: [
+                    LatLng(7.06327477333032, 125.5989188107519),
+                    LatLng(7.067552404416505, 125.6021786429538),
+                    LatLng(7.0627546602066085, 125.59700467931148),
+                    LatLng(7.063532187465152, 125.60072093703862),
+                  ],
+                ),
+                SizedBox(height: 5),
+                RouteCard(
+                  routeName: 'Calinan',
+                  routeDirection: LatLng(7.190869661111901, 125.4552095279781),
+                  fare: '30',
+                  jeepneys: [
+                    LatLng(7.06327477333032, 125.5989188107519),
+                    LatLng(7.067552404416505, 125.6021786429538),
+                    LatLng(7.0627546602066085, 125.59700467931148),
+                    LatLng(7.063532187465152, 125.60072093703862),
+                  ],
+                ),
               ],
             ),
           ],
