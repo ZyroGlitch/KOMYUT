@@ -73,19 +73,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    // ElevatedButton.icon(
-                    //   onPressed: () {},
-                    //   label: Text(
-                    //     'Search',
-                    //     style: TextStyle(fontSize: 13),
-                    //   ),
-                    //   icon: Icon(Icons.search),
-                    //   style: ElevatedButton.styleFrom(
-                    //     backgroundColor: Colors.orange,
-                    //     foregroundColor: Colors.white,
-                    //     fixedSize: Size(150, 50),
-                    //   ),
-                    // ),
                   ],
                 ),
                 // Route Suggestions
